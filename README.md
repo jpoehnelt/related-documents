@@ -20,7 +20,7 @@ npm i related-documents
 ## Usage
 
 ```js
-import {Related} from 'related-documents';
+import { Related } from "related-documents";
 
 const documents = [
   { title: "ruby", text: "this lorem ipsum blah foo" },
@@ -31,7 +31,6 @@ const documents = [
     text: "this document is about node. it has node examples",
   },
 ];
-
 
 const options = {
   serializer: (document: any) => [document.title, document.text],

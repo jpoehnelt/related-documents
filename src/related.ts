@@ -103,7 +103,6 @@ export class Related {
       return;
     }
 
-
     // documents -> parts -> words -> stems
     this.stems_ = this.documents_.map((item) => this.process(item));
     this.tfidfs_ = [];
@@ -138,7 +137,7 @@ export class Related {
    */
   stem(parts: string[][]): string[][] {
     if (this.stemmer) {
-      return parts.map(words => words.map((w) => this.stemmer.stem(w)));
+      return parts.map((words) => words.map((w) => this.stemmer.stem(w)));
     } else {
       return parts;
     }
@@ -153,13 +152,15 @@ export class Related {
     const stems = this.stem(tokens);
 
     if (this.debug) {
-      console.log({ serialized, tokens, stems })
+      console.log({ serialized, tokens, stems });
     }
 
     return stems;
   }
 
-  public rank(document: any): { relative: number; absolute: number, document: any }[] {
+  public rank(
+    document: any
+  ): { relative: number; absolute: number; document: any }[] {
     this.prepare();
 
     const documentStems = this.process(document);
@@ -173,36 +174,17 @@ export class Related {
 
     const scores = measures
       .map((score, i) => ({ score, document: this.documents_[i] }))
-      .sort((a, b) => b.score - a.score)
+      .sort((a, b) => b.score - a.score);
 
     const max = scores[0].score;
     const min = scores[scores.length - 1].score;
 
-    return scores.map(({ score, document }) => ({ relative: (score - min) / (max - min), absolute: score, document })).slice(1, measures.length)
+    return scores
+      .map(({ score, document }) => ({
+        relative: (score - min) / (max - min),
+        absolute: score,
+        document,
+      }))
+      .slice(1, measures.length);
   }
-}
-
-export const closure = (options: Options) => {
-
-  return (document, documents) => {
-    let related: Related;
-
-    if (!related || !shallowIsEqual(documents, related.documents)) {
-      related = new Related(documents, options);
-    }
-
-    return related.rank(document);
-  };
-};
-
-const shallowIsEqual = (a: any[], b: any[]): boolean => {
-  if (a.length !== b.length) { return false; }
-
-  for (let i = 0; i < a.length; i++) {
-    if (a !== b) {
-      return false
-    }
-  }
-
-  return true;
 }

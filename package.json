@@ -24,6 +24,10 @@
     {
       "type" : "patreon",
       "url" : "https://www.patreon.com/jpoehnelt"
+    },
+    {
+      "type" : "opencollective",
+      "url" : "https://opencollective.com/jpoehnelt"
     }
   ],
   "keywords": [
