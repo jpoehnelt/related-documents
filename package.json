@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "description": "Find related text documents.",
   "main": "dist/index.js",
+  "homepage": "https://github.com/jpoehnelt/related-documents",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jpoehnelt/related-documents.git"
+  },
   "scripts": {
     "build": "esbuild src/index.ts --outfile=dist/index.js --sourcemap --platform=node --external:./node_modules/* --bundle",
     "docs": "typedoc src/index.ts",
@@ -14,6 +19,12 @@
   "files": [
     "src",
     "dist"
+  ],
+  "funding": [
+    {
+      "type" : "patreon",
+      "url" : "https://www.patreon.com/jpoehnelt"
+    }
   ],
   "keywords": [
     "documents",
