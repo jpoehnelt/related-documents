@@ -32,6 +32,8 @@ const documents = [
   },
 ];
 
+// The serializer array length must match that of the weights array.
+// This example applies a weight of 10 to the title and 1 to the text.
 const options = {
   serializer: (document: any) => [document.title, document.text],
   weights: [10, 1],
