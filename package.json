@@ -3,13 +3,14 @@
   "version": "1.0.2",
   "description": "Find related text documents.",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "homepage": "https://github.com/jpoehnelt/related-documents",
   "repository": {
     "type": "git",
     "url": "https://github.com/jpoehnelt/related-documents.git"
   },
   "scripts": {
-    "build": "esbuild src/index.ts --outfile=dist/index.js --sourcemap --platform=node --external:./node_modules/* --bundle",
+    "build": "tsc --emitDeclarationOnly && esbuild src/index.ts --outfile=dist/index.js --sourcemap --platform=node --external:./node_modules/* --bundle",
     "docs": "typedoc src/index.ts",
     "format": "eslint . --fix",
     "lint": "eslint .",
