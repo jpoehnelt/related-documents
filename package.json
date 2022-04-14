@@ -10,7 +10,7 @@
     "url": "https://github.com/jpoehnelt/related-documents.git"
   },
   "scripts": {
-    "build": "tsc --emitDeclarationOnly && esbuild src/index.ts --outfile=dist/index.js --sourcemap --platform=node --bundle",
+    "build": "tsc --emitDeclarationOnly && esbuild src/index.ts --outfile=dist/index.js --sourcemap --format=cjs --bundle --external:lodash --external:natural",
     "docs": "typedoc src/index.ts",
     "format": "eslint . --fix",
     "lint": "eslint .",
