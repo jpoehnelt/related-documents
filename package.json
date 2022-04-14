@@ -1,6 +1,6 @@
 {
   "name": "related-documents",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Find related text documents.",
   "main": "dist/index.js",
   "homepage": "https://github.com/jpoehnelt/related-documents",
@@ -22,12 +22,12 @@
   ],
   "funding": [
     {
-      "type" : "patreon",
-      "url" : "https://www.patreon.com/jpoehnelt"
+      "type": "patreon",
+      "url": "https://www.patreon.com/jpoehnelt"
     },
     {
-      "type" : "opencollective",
-      "url" : "https://opencollective.com/jpoehnelt"
+      "type": "opencollective",
+      "url": "https://opencollective.com/jpoehnelt"
     }
   ],
   "keywords": [
