@@ -34,6 +34,10 @@ export class Related {
   private debug = false;
 
   constructor(documents: any[], options: Options) {
+    if (!Array.isArray(documents)) {
+      throw new Error("documents must be an array");
+    }
+    
     this.documents_ = documents;
     this.options_ = {
       stemmer: PorterStemmer,
@@ -148,6 +152,17 @@ export class Related {
    */
   private process(document: any): string[][] {
     const serialized = this.serialize(document);
+
+    // validate an array of strings is returned by the serializer
+    if (
+      !Array.isArray(serialized) ||
+      serialized.some((s) => typeof s !== "string")
+    ) {
+      throw new Error(
+        `serializer must return an array of strings: ${serialized}`
+      );
+    }
+
     const tokens = this.tokenize(serialized);
     const stems = this.stem(tokens);
 
